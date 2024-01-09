@@ -17,3 +17,11 @@ Route::get('/', function () {
     // return view('welcome');
     return view('auth/sign-in');
 });
+
+Route::get('/dashboard', function () {
+    return view('index');
+});
+
+Route::get('/setting', function () {
+    return view('account/setting');
+});
