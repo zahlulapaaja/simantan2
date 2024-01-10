@@ -73,11 +73,11 @@ License: For each use you must have a valid license purchased only from above li
 			<!--begin::Header-->
 			<div id="kt_app_header" class="app-header">
 
-				@include('master/header-primary')
-				@include('master/header-secondary')
+				@include('layout.header-primary')
+				@include('layout.header-secondary')
 
 			</div>
 			<!--end::Header-->
 			<!--begin::Wrapper-->
 			<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
-				@include('master/sidebar')
+				@include('layout.sidebar')

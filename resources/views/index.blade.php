@@ -1,4 +1,5 @@
-@include('master/header');
+@extends('layout.master')
+@section('content')
 <!--begin::Main-->
 <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
 	<!--begin::Content wrapper-->
@@ -3617,4 +3618,4 @@
 	<!--end::Footer-->
 </div>
 <!--end:::Main-->
-@include('master/footer');
+@endsection
