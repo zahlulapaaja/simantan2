@@ -48,4 +48,28 @@ class UserController extends Controller
         // dd($data);
         return view('users.edit', compact('data'));
     }
+
+    public function update(Request $request, $id)
+    {
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'name'  => 'required',
+            'password'  => 'nullable'
+        ]);
+
+        if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+
+        $data['email'] = $request->email;
+        $data['name'] = $request->name;
+
+        if ($request->password) {
+            $data['password'] = Hash::make($request->password);
+        }
+
+        // dd($data);
+
+        User::whereId($id)->update($data);
+        return redirect()->route('user.list');
+    }
 }

@@ -64,6 +64,7 @@
 				<!--begin::Form-->
 				<form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" action="{{ route('user.update', ['id' => $data->id]) }}" method="post">
 					@csrf
+					@method('PUT')
 					<!--begin::Aside column-->
 					<div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
 						<!--begin::Thumbnail settings-->
@@ -1507,11 +1508,11 @@
 							<a href="apps/ecommerce/catalog/products.html" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Cancel</a>
 							<!--end::Button-->
 							<!--begin::Button-->
-							<button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
-								<span class="indicator-label">Save Changes</span>
+							<input type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary" />
+							<!-- <span class="indicator-label">Save Changes</span>
 								<span class="indicator-progress">Please wait...
 									<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-							</button>
+							</button> -->
 							<!--end::Button-->
 						</div>
 					</div>
