@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -21,7 +23,21 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
-        return view('users.create');
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'name'  => 'required',
+            'password'  => 'required'
+        ]);
+
+        if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+
+        $data['email'] = $request->email;
+        $data['name'] = $request->name;
+        $data['password'] = Hash::make($request->password);
+
+        // dd($data);
+
+        User::create($data);
+        return redirect()->route('user.list');
     }
 }

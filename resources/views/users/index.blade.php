@@ -132,8 +132,11 @@
                                     <i class="ki-outline ki-exit-up fs-2"></i>Export</button>
                                 <!--end::Export-->
                                 <!--begin::Add user-->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
-                                    <i class="ki-outline ki-plus fs-2"></i>Add User</button>
+                                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
+                                    <i class="ki-outline ki-plus fs-2"></i>Add User</button> -->
+                                <a href="{{ route('user.create') }}" class="btn btn-primary">
+                                    <i class="ki-outline ki-plus fs-2"></i>Add User
+                                </a>
                                 <!--end::Add user-->
                             </div>
                             <!--end::Toolbar-->
@@ -251,7 +254,7 @@
                                                         <label class="required fw-semibold fs-6 mb-2">Full Name</label>
                                                         <!--end::Label-->
                                                         <!--begin::Input-->
-                                                        <input type="text" name="user_name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Full name"/>
+                                                        <input type="text" name="user_name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Full name" />
                                                         <!--end::Input-->
                                                     </div>
                                                     <!--end::Input group-->
@@ -261,7 +264,7 @@
                                                         <label class="required fw-semibold fs-6 mb-2">Email</label>
                                                         <!--end::Label-->
                                                         <!--begin::Input-->
-                                                        <input type="email" name="user_email" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="example@domain.com"/>
+                                                        <input type="email" name="user_email" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="example@domain.com" />
                                                         <!--end::Input-->
                                                     </div>
                                                     <!--end::Input group-->
@@ -270,7 +273,7 @@
                                                         <label class="required fw-semibold fs-6 mb-2">Password</label>
                                                         <!--end::Label-->
                                                         <!--begin::Input-->
-                                                        <input type="password" name="user_password" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="********"/>
+                                                        <input type="password" name="user_password" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="********" />
                                                         <!--end::Input-->
                                                     </div>
                                                     <!--end::Input group-->
@@ -414,19 +417,19 @@
 <!--end:::Main-->
 @push('scripts')
 <script src="js/custom/apps/user-management/users/list/table.js"></script>
-		<script src="js/custom/apps/user-management/users/list/export-users.js"></script>
-		<script src="js/custom/apps/user-management/users/list/add.js"></script>
-		<script src="js/custom/utilities/modals/create-campaign.js"></script>
-		<script src="js/custom/utilities/modals/new-target.js"></script>
-		<script src="js/custom/utilities/modals/new-card.js"></script>
-		<script src="js/custom/utilities/modals/bidding.js"></script>
-		<script src="js/custom/utilities/modals/top-up-wallet.js"></script>
-		<script src="js/widgets.bundle.js"></script>
-		<script src="js/custom/widgets.js"></script>
-		<script src="js/custom/apps/chat/chat.js"></script>
-		<script src="js/custom/utilities/modals/share-earn.js"></script>
-		<script src="js/custom/utilities/modals/upgrade-plan.js"></script>
-		<script src="js/custom/utilities/modals/users-search.js"></script>
+<script src="js/custom/apps/user-management/users/list/export-users.js"></script>
+<script src="js/custom/apps/user-management/users/list/add.js"></script>
+<script src="js/custom/utilities/modals/create-campaign.js"></script>
+<script src="js/custom/utilities/modals/new-target.js"></script>
+<script src="js/custom/utilities/modals/new-card.js"></script>
+<script src="js/custom/utilities/modals/bidding.js"></script>
+<script src="js/custom/utilities/modals/top-up-wallet.js"></script>
+<script src="js/widgets.bundle.js"></script>
+<script src="js/custom/widgets.js"></script>
+<script src="js/custom/apps/chat/chat.js"></script>
+<script src="js/custom/utilities/modals/share-earn.js"></script>
+<script src="js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="js/custom/utilities/modals/users-search.js"></script>
 @endpush
 
 @endsection

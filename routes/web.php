@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/users', [UserController::class, 'index']);
+Route::get('/users', [UserController::class, 'index'])->name('user.list');
 Route::get('/create', [UserController::class, 'create'])->name('user.create');
-Route::get('/store', [UserController::class, 'store'])->name('user.store');
+Route::post('/store', [UserController::class, 'store'])->name('user.store');
 
 // Route::get('/dashboard', function () {
 //     return view('index');
