@@ -13,7 +13,7 @@
 					<!--begin::Page title-->
 					<div class="page-title d-flex flex-column justify-content-center gap-1 me-3">
 						<!--begin::Title-->
-						<h1 class="page-heading d-flex flex-column justify-content-center text-gray-900 fw-bold fs-3 m-0">Create User</h1>
+						<h1 class="page-heading d-flex flex-column justify-content-center text-gray-900 fw-bold fs-3 m-0">Edit User</h1>
 						<!--end::Title-->
 						<!--begin::Breadcrumb-->
 						<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0">
@@ -62,7 +62,7 @@
 			<!--begin::Content container-->
 			<div id="kt_app_content_container" class="app-container container-fluid">
 				<!--begin::Form-->
-				<form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" action="{{ route('user.store') }}" method="post">
+				<form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" action="{{ route('user.update', ['id' => $data->id]) }}" method="post">
 					@csrf
 					<!--begin::Aside column-->
 					<div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
@@ -80,20 +80,9 @@
 							<!--begin::Card body-->
 							<div class="card-body text-center pt-0">
 								<!--begin::Image input-->
-								<!--begin::Image input placeholder-->
-								<style>
-									.image-input-placeholder {
-										background-image: url('assets/media/svg/files/blank-image.svg');
-									}
-
-									[data-bs-theme="dark"] .image-input-placeholder {
-										background-image: url('assets/media/svg/files/blank-image-dark.svg');
-									}
-								</style>
-								<!--end::Image input placeholder-->
 								<div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3" data-kt-image-input="true">
 									<!--begin::Preview existing avatar-->
-									<div class="image-input-wrapper w-150px h-150px"></div>
+									<div class="image-input-wrapper w-150px h-150px" style="background-image: url(assets/media//stock/ecommerce/78.png)"></div>
 									<!--end::Preview existing avatar-->
 									<!--begin::Label-->
 									<label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
@@ -208,7 +197,7 @@
 								<label class="form-label d-block">Tags</label>
 								<!--end::Label-->
 								<!--begin::Input-->
-								<input id="kt_ecommerce_add_product_tags" name="kt_ecommerce_add_product_tags" class="form-control mb-2" value="" />
+								<input id="kt_ecommerce_add_product_tags" name="kt_ecommerce_add_product_tags" class="form-control mb-2" value="new, trending, sale" />
 								<!--end::Input-->
 								<!--begin::Description-->
 								<div class="text-muted fs-7">Add tags to a product.</div>
@@ -218,24 +207,42 @@
 							<!--end::Card body-->
 						</div>
 						<!--end::Category & tags-->
-						<!--begin::Weekly sales-->
-						<div class="card card-flush py-4">
-							<!--begin::Card header-->
-							<div class="card-header">
-								<!--begin::Card title-->
-								<div class="card-title">
-									<h2>Weekly Sales</h2>
+						<!--begin::Card widget 6-->
+						<div class="card card-flush">
+							<!--begin::Header-->
+							<div class="card-header pt-5">
+								<!--begin::Title-->
+								<div class="card-title d-flex flex-column">
+									<!--begin::Info-->
+									<div class="d-flex align-items-center">
+										<!--begin::Currency-->
+										<span class="fs-4 fw-semibold text-gray-500 me-1 align-self-start">$</span>
+										<!--end::Currency-->
+										<!--begin::Amount-->
+										<span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">2,420</span>
+										<!--end::Amount-->
+										<!--begin::Badge-->
+										<span class="badge badge-light-success fs-base">
+											<i class="ki-outline ki-arrow-up fs-5 text-success ms-n1"></i>2.6%</span>
+										<!--end::Badge-->
+									</div>
+									<!--end::Info-->
+									<!--begin::Subtitle-->
+									<span class="text-gray-500 pt-1 fw-semibold fs-6">Average Daily Sales</span>
+									<!--end::Subtitle-->
 								</div>
-								<!--end::Card title-->
+								<!--end::Title-->
 							</div>
-							<!--end::Card header-->
+							<!--end::Header-->
 							<!--begin::Card body-->
-							<div class="card-body pt-0">
-								<span class="text-muted">No data available. Sales data will begin capturing once product has been published.</span>
+							<div class="card-body d-flex align-items-end px-0 pb-0">
+								<!--begin::Chart-->
+								<div id="kt_card_widget_6_chart" class="w-100" style="height: 80px"></div>
+								<!--end::Chart-->
 							</div>
 							<!--end::Card body-->
 						</div>
-						<!--end::Weekly sales-->
+						<!--end::Card widget 6-->
 						<!--begin::Template settings-->
 						<div class="card card-flush py-4">
 							<!--begin::Card header-->
@@ -284,6 +291,11 @@
 								<a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#kt_ecommerce_add_product_advanced">Advanced</a>
 							</li>
 							<!--end:::Tab item-->
+							<!--begin:::Tab item-->
+							<li class="nav-item">
+								<a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#kt_ecommerce_add_product_reviews">Reviews</a>
+							</li>
+							<!--end:::Tab item-->
 						</ul>
 						<!--end:::Tabs-->
 						<!--begin::Tab content-->
@@ -308,7 +320,7 @@
 												<label class="required form-label">Full Name</label>
 												<!--end::Label-->
 												<!--begin::Input-->
-												<input type="text" name="name" class="form-control mb-2" placeholder="Full Name" />
+												<input type="text" name="name" class="form-control mb-2" placeholder="Full Name" value="{{ $data->name }}" />
 												<!--end::Input-->
 											</div>
 											<!--end::Input group-->
@@ -318,7 +330,7 @@
 												<label class="required form-label">Email</label>
 												<!--end::Label-->
 												<!--begin::Input-->
-												<input type="email" name="email" class="form-control mb-2" placeholder="Email" />
+												<input type="email" name="email" class="form-control mb-2" placeholder="Email" value="{{ $data->email }}" />
 												<!--end::Input-->
 												<!--begin::Description-->
 												<div class="text-muted fs-7">An email is required and recommended to be unique.</div>
@@ -407,7 +419,7 @@
 												<label class="required form-label">Base Price</label>
 												<!--end::Label-->
 												<!--begin::Input-->
-												<input type="text" name="price" class="form-control mb-2" placeholder="Product price" value="" />
+												<input type="text" name="price" class="form-control mb-2" placeholder="Product price" value="199.99" />
 												<!--end::Input-->
 												<!--begin::Description-->
 												<div class="text-muted fs-7">Set the product price.</div>
@@ -427,10 +439,10 @@
 													<!--begin::Col-->
 													<div class="col">
 														<!--begin::Option-->
-														<label class="btn btn-outline btn-outline-dashed btn-active-light-primary active d-flex text-start p-6" data-kt-button="true">
+														<label class="btn btn-outline btn-outline-dashed btn-active-light-primary d-flex text-start p-6" data-kt-button="true">
 															<!--begin::Radio-->
 															<span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
-																<input class="form-check-input" type="radio" name="discount_option" value="1" checked="checked" />
+																<input class="form-check-input" type="radio" name="discount_option" value="1" />
 															</span>
 															<!--end::Radio-->
 															<!--begin::Info-->
@@ -445,10 +457,10 @@
 													<!--begin::Col-->
 													<div class="col">
 														<!--begin::Option-->
-														<label class="btn btn-outline btn-outline-dashed btn-active-light-primary d-flex text-start p-6" data-kt-button="true">
+														<label class="btn btn-outline btn-outline-dashed btn-active-light-primary active d-flex text-start p-6" data-kt-button="true">
 															<!--begin::Radio-->
 															<span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
-																<input class="form-check-input" type="radio" name="discount_option" value="2" />
+																<input class="form-check-input" type="radio" name="discount_option" value="2" checked="checked" />
 															</span>
 															<!--end::Radio-->
 															<!--begin::Info-->
@@ -483,7 +495,7 @@
 											</div>
 											<!--end::Input group-->
 											<!--begin::Input group-->
-											<div class="d-none mb-10 fv-row" id="kt_ecommerce_add_product_discount_percentage">
+											<div class="mb-10 fv-row" id="kt_ecommerce_add_product_discount_percentage">
 												<!--begin::Label-->
 												<label class="form-label">Set Discount Percentage</label>
 												<!--end::Label-->
@@ -525,7 +537,7 @@
 													<select class="form-select mb-2" name="tax" data-control="select2" data-hide-search="true" data-placeholder="Select an option">
 														<option></option>
 														<option value="0">Tax Free</option>
-														<option value="1">Taxable Goods</option>
+														<option value="1" selected="selected">Taxable Goods</option>
 														<option value="2">Downloadable Product</option>
 													</select>
 													<!--end::Select2-->
@@ -540,7 +552,7 @@
 													<label class="form-label">VAT Amount (%)</label>
 													<!--end::Label-->
 													<!--begin::Input-->
-													<input type="text" class="form-control mb-2" value="" />
+													<input type="text" class="form-control mb-2" value="35" />
 													<!--end::Input-->
 													<!--begin::Description-->
 													<div class="text-muted fs-7">Set the product VAT about.</div>
@@ -576,7 +588,7 @@
 												<label class="required form-label">SKU</label>
 												<!--end::Label-->
 												<!--begin::Input-->
-												<input type="text" name="sku" class="form-control mb-2" placeholder="SKU Number" value="" />
+												<input type="text" name="sku" class="form-control mb-2" placeholder="SKU Number" value="011985001" />
 												<!--end::Input-->
 												<!--begin::Description-->
 												<div class="text-muted fs-7">Enter the product SKU.</div>
@@ -589,7 +601,7 @@
 												<label class="required form-label">Barcode</label>
 												<!--end::Label-->
 												<!--begin::Input-->
-												<input type="text" name="barcode" class="form-control mb-2" placeholder="Barcode Number" value="" />
+												<input type="text" name="barcode" class="form-control mb-2" placeholder="Barcode Number" value="45874521458" />
 												<!--end::Input-->
 												<!--begin::Description-->
 												<div class="text-muted fs-7">Enter the product barcode number.</div>
@@ -603,7 +615,7 @@
 												<!--end::Label-->
 												<!--begin::Input-->
 												<div class="d-flex gap-3">
-													<input type="number" name="shelf" class="form-control mb-2" placeholder="On shelf" value="" />
+													<input type="number" name="shelf" class="form-control mb-2" placeholder="On shelf" value="24" />
 													<input type="number" name="warehouse" class="form-control mb-2" placeholder="In warehouse" />
 												</div>
 												<!--end::Input-->
@@ -704,7 +716,7 @@
 											<div class="fv-row">
 												<!--begin::Input-->
 												<div class="form-check form-check-custom form-check-solid mb-2">
-													<input class="form-check-input" type="checkbox" id="kt_ecommerce_add_product_shipping_checkbox" value="1" />
+													<input class="form-check-input" type="checkbox" id="kt_ecommerce_add_product_shipping_checkbox" value="1" checked="checked" />
 													<label class="form-check-label">This is a physical product</label>
 												</div>
 												<!--end::Input-->
@@ -714,14 +726,14 @@
 											</div>
 											<!--end::Input group-->
 											<!--begin::Shipping form-->
-											<div id="kt_ecommerce_add_product_shipping" class="d-none mt-10">
+											<div id="kt_ecommerce_add_product_shipping" class="mt-10">
 												<!--begin::Input group-->
 												<div class="mb-10 fv-row">
 													<!--begin::Label-->
 													<label class="form-label">Weight</label>
 													<!--end::Label-->
 													<!--begin::Editor-->
-													<input type="text" name="weight" class="form-control mb-2" placeholder="Product weight" value="" />
+													<input type="text" name="weight" class="form-control mb-2" placeholder="Product weight" value="4.3" />
 													<!--end::Editor-->
 													<!--begin::Description-->
 													<div class="text-muted fs-7">Set a product weight in kilograms (kg).</div>
@@ -735,9 +747,9 @@
 													<!--end::Label-->
 													<!--begin::Input-->
 													<div class="d-flex flex-wrap flex-sm-nowrap gap-3">
-														<input type="number" name="width" class="form-control mb-2" placeholder="Width (w)" value="" />
-														<input type="number" name="height" class="form-control mb-2" placeholder="Height (h)" value="" />
-														<input type="number" name="length" class="form-control mb-2" placeholder="Lengtn (l)" value="" />
+														<input type="number" name="width" class="form-control mb-2" placeholder="Width (w)" value="12" />
+														<input type="number" name="height" class="form-control mb-2" placeholder="Height (h)" value="4" />
+														<input type="number" name="length" class="form-control mb-2" placeholder="Lengtn (l)" value="8.5" />
 													</div>
 													<!--end::Input-->
 													<!--begin::Description-->
@@ -810,6 +822,684 @@
 								</div>
 							</div>
 							<!--end::Tab pane-->
+							<!--begin::Tab pane-->
+							<div class="tab-pane fade" id="kt_ecommerce_add_product_reviews" role="tab-panel">
+								<div class="d-flex flex-column gap-7 gap-lg-10">
+									<!--begin::Reviews-->
+									<div class="card card-flush py-4">
+										<!--begin::Card header-->
+										<div class="card-header">
+											<!--begin::Card title-->
+											<div class="card-title">
+												<h2>Customer Reviews</h2>
+											</div>
+											<!--end::Card title-->
+											<!--begin::Card toolbar-->
+											<div class="card-toolbar">
+												<!--begin::Rating label-->
+												<span class="fw-bold me-5">Overall Rating:</span>
+												<!--end::Rating label-->
+												<!--begin::Overall rating-->
+												<div class="rating">
+													<div class="rating-label checked">
+														<i class="ki-outline ki-star fs-2"></i>
+													</div>
+													<div class="rating-label checked">
+														<i class="ki-outline ki-star fs-2"></i>
+													</div>
+													<div class="rating-label checked">
+														<i class="ki-outline ki-star fs-2"></i>
+													</div>
+													<div class="rating-label checked">
+														<i class="ki-outline ki-star fs-2"></i>
+													</div>
+													<div class="rating-label">
+														<i class="ki-outline ki-star fs-2"></i>
+													</div>
+												</div>
+												<!--end::Overall rating-->
+											</div>
+											<!--end::Card toolbar-->
+										</div>
+										<!--end::Card header-->
+										<!--begin::Card body-->
+										<div class="card-body pt-0">
+											<!--begin::Table-->
+											<table class="table table-row-dashed fs-6 gy-5 my-0" id="kt_ecommerce_add_product_reviews">
+												<thead>
+													<tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+														<th class="w-10px pe-2">
+															<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+																<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_ecommerce_add_product_reviews .form-check-input" value="1" />
+															</div>
+														</th>
+														<th class="min-w-125px">Rating</th>
+														<th class="min-w-175px">Customer</th>
+														<th class="min-w-175px">Comment</th>
+														<th class="min-w-100px text-end fs-7">Date</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>
+															<!--begin::Checkbox-->
+															<div class="form-check form-check-sm form-check-custom form-check-solid mt-1">
+																<input class="form-check-input" type="checkbox" value="1" />
+															</div>
+															<!--end::Checkbox-->
+														</td>
+														<td data-order="rating-5">
+															<!--begin::Rating-->
+															<div class="rating">
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+															</div>
+															<!--end::Rating-->
+														</td>
+														<td>
+															<a href="apps/inbox/reply.html" class="d-flex text-gray-900 text-gray-800 text-hover-primary">
+																<!--begin::Avatar-->
+																<div class="symbol symbol-circle symbol-25px me-3">
+																	<div class="symbol-label bg-light-danger">
+																		<span class="text-danger">M</span>
+																	</div>
+																</div>
+																<!--end::Avatar-->
+																<!--begin::Name-->
+																<span class="fw-bold">Melody Macy</span>
+																<!--end::Name-->
+															</a>
+														</td>
+														<td class="text-gray-600 fw-bold">I like this design</td>
+														<td class="text-end">
+															<span class="fw-semibold text-muted">Today</span>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<!--begin::Checkbox-->
+															<div class="form-check form-check-sm form-check-custom form-check-solid mt-1">
+																<input class="form-check-input" type="checkbox" value="1" />
+															</div>
+															<!--end::Checkbox-->
+														</td>
+														<td data-order="rating-5">
+															<!--begin::Rating-->
+															<div class="rating">
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+															</div>
+															<!--end::Rating-->
+														</td>
+														<td>
+															<a href="apps/inbox/reply.html" class="d-flex text-gray-900 text-gray-800 text-hover-primary">
+																<!--begin::Avatar-->
+																<div class="symbol symbol-circle symbol-25px me-3">
+																	<span class="symbol-label" style="background-image:url(assets/media/avatars/300-1.jpg)"></span>
+																</div>
+																<!--end::Avatar-->
+																<!--begin::Name-->
+																<span class="fw-bold">Max Smith</span>
+																<!--end::Name-->
+															</a>
+														</td>
+														<td class="text-gray-600 fw-bold">Good product for outdoors or indoors</td>
+														<td class="text-end">
+															<span class="fw-semibold text-muted">day ago</span>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<!--begin::Checkbox-->
+															<div class="form-check form-check-sm form-check-custom form-check-solid mt-1">
+																<input class="form-check-input" type="checkbox" value="1" />
+															</div>
+															<!--end::Checkbox-->
+														</td>
+														<td data-order="rating-4">
+															<!--begin::Rating-->
+															<div class="rating">
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+															</div>
+															<!--end::Rating-->
+														</td>
+														<td>
+															<a href="apps/inbox/reply.html" class="d-flex text-gray-900 text-gray-800 text-hover-primary">
+																<!--begin::Avatar-->
+																<div class="symbol symbol-circle symbol-25px me-3">
+																	<span class="symbol-label" style="background-image:url(assets/media/avatars/300-5.jpg)"></span>
+																</div>
+																<!--end::Avatar-->
+																<!--begin::Name-->
+																<span class="fw-bold">Sean Bean</span>
+																<!--end::Name-->
+															</a>
+														</td>
+														<td class="text-gray-600 fw-bold">Awesome quality with great materials used, but could be more comfortable</td>
+														<td class="text-end">
+															<span class="fw-semibold text-muted">11:20 PM</span>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<!--begin::Checkbox-->
+															<div class="form-check form-check-sm form-check-custom form-check-solid mt-1">
+																<input class="form-check-input" type="checkbox" value="1" />
+															</div>
+															<!--end::Checkbox-->
+														</td>
+														<td data-order="rating-5">
+															<!--begin::Rating-->
+															<div class="rating">
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+															</div>
+															<!--end::Rating-->
+														</td>
+														<td>
+															<a href="apps/inbox/reply.html" class="d-flex text-gray-900 text-gray-800 text-hover-primary">
+																<!--begin::Avatar-->
+																<div class="symbol symbol-circle symbol-25px me-3">
+																	<span class="symbol-label" style="background-image:url(assets/media/avatars/300-25.jpg)"></span>
+																</div>
+																<!--end::Avatar-->
+																<!--begin::Name-->
+																<span class="fw-bold">Brian Cox</span>
+																<!--end::Name-->
+															</a>
+														</td>
+														<td class="text-gray-600 fw-bold">This is the best product I've ever used.</td>
+														<td class="text-end">
+															<span class="fw-semibold text-muted">2 days ago</span>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<!--begin::Checkbox-->
+															<div class="form-check form-check-sm form-check-custom form-check-solid mt-1">
+																<input class="form-check-input" type="checkbox" value="1" />
+															</div>
+															<!--end::Checkbox-->
+														</td>
+														<td data-order="rating-3">
+															<!--begin::Rating-->
+															<div class="rating">
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+															</div>
+															<!--end::Rating-->
+														</td>
+														<td>
+															<a href="apps/inbox/reply.html" class="d-flex text-gray-900 text-gray-800 text-hover-primary">
+																<!--begin::Avatar-->
+																<div class="symbol symbol-circle symbol-25px me-3">
+																	<div class="symbol-label bg-light-warning">
+																		<span class="text-warning">C</span>
+																	</div>
+																</div>
+																<!--end::Avatar-->
+																<!--begin::Name-->
+																<span class="fw-bold">Mikaela Collins</span>
+																<!--end::Name-->
+															</a>
+														</td>
+														<td class="text-gray-600 fw-bold">I thought it was just average, I prefer other brands</td>
+														<td class="text-end">
+															<span class="fw-semibold text-muted">July 25</span>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<!--begin::Checkbox-->
+															<div class="form-check form-check-sm form-check-custom form-check-solid mt-1">
+																<input class="form-check-input" type="checkbox" value="1" />
+															</div>
+															<!--end::Checkbox-->
+														</td>
+														<td data-order="rating-5">
+															<!--begin::Rating-->
+															<div class="rating">
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+															</div>
+															<!--end::Rating-->
+														</td>
+														<td>
+															<a href="apps/inbox/reply.html" class="d-flex text-gray-900 text-gray-800 text-hover-primary">
+																<!--begin::Avatar-->
+																<div class="symbol symbol-circle symbol-25px me-3">
+																	<span class="symbol-label" style="background-image:url(assets/media/avatars/300-9.jpg)"></span>
+																</div>
+																<!--end::Avatar-->
+																<!--begin::Name-->
+																<span class="fw-bold">Francis Mitcham</span>
+																<!--end::Name-->
+															</a>
+														</td>
+														<td class="text-gray-600 fw-bold">Beautifully crafted. Worth every penny.</td>
+														<td class="text-end">
+															<span class="fw-semibold text-muted">July 24</span>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<!--begin::Checkbox-->
+															<div class="form-check form-check-sm form-check-custom form-check-solid mt-1">
+																<input class="form-check-input" type="checkbox" value="1" />
+															</div>
+															<!--end::Checkbox-->
+														</td>
+														<td data-order="rating-4">
+															<!--begin::Rating-->
+															<div class="rating">
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+															</div>
+															<!--end::Rating-->
+														</td>
+														<td>
+															<a href="apps/inbox/reply.html" class="d-flex text-gray-900 text-gray-800 text-hover-primary">
+																<!--begin::Avatar-->
+																<div class="symbol symbol-circle symbol-25px me-3">
+																	<div class="symbol-label bg-light-danger">
+																		<span class="text-danger">O</span>
+																	</div>
+																</div>
+																<!--end::Avatar-->
+																<!--begin::Name-->
+																<span class="fw-bold">Olivia Wild</span>
+																<!--end::Name-->
+															</a>
+														</td>
+														<td class="text-gray-600 fw-bold">Awesome value for money. Shipping could be faster tho.</td>
+														<td class="text-end">
+															<span class="fw-semibold text-muted">July 13</span>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<!--begin::Checkbox-->
+															<div class="form-check form-check-sm form-check-custom form-check-solid mt-1">
+																<input class="form-check-input" type="checkbox" value="1" />
+															</div>
+															<!--end::Checkbox-->
+														</td>
+														<td data-order="rating-5">
+															<!--begin::Rating-->
+															<div class="rating">
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+															</div>
+															<!--end::Rating-->
+														</td>
+														<td>
+															<a href="apps/inbox/reply.html" class="d-flex text-gray-900 text-gray-800 text-hover-primary">
+																<!--begin::Avatar-->
+																<div class="symbol symbol-circle symbol-25px me-3">
+																	<div class="symbol-label bg-light-primary">
+																		<span class="text-primary">N</span>
+																	</div>
+																</div>
+																<!--end::Avatar-->
+																<!--begin::Name-->
+																<span class="fw-bold">Neil Owen</span>
+																<!--end::Name-->
+															</a>
+														</td>
+														<td class="text-gray-600 fw-bold">Excellent quality, I got it for my son's birthday and he loved it!</td>
+														<td class="text-end">
+															<span class="fw-semibold text-muted">May 25</span>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<!--begin::Checkbox-->
+															<div class="form-check form-check-sm form-check-custom form-check-solid mt-1">
+																<input class="form-check-input" type="checkbox" value="1" />
+															</div>
+															<!--end::Checkbox-->
+														</td>
+														<td data-order="rating-5">
+															<!--begin::Rating-->
+															<div class="rating">
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+															</div>
+															<!--end::Rating-->
+														</td>
+														<td>
+															<a href="apps/inbox/reply.html" class="d-flex text-gray-900 text-gray-800 text-hover-primary">
+																<!--begin::Avatar-->
+																<div class="symbol symbol-circle symbol-25px me-3">
+																	<span class="symbol-label" style="background-image:url(assets/media/avatars/300-23.jpg)"></span>
+																</div>
+																<!--end::Avatar-->
+																<!--begin::Name-->
+																<span class="fw-bold">Dan Wilson</span>
+																<!--end::Name-->
+															</a>
+														</td>
+														<td class="text-gray-600 fw-bold">I got this for Christmas last year, and it's still the best product I've ever used!</td>
+														<td class="text-end">
+															<span class="fw-semibold text-muted">April 15</span>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<!--begin::Checkbox-->
+															<div class="form-check form-check-sm form-check-custom form-check-solid mt-1">
+																<input class="form-check-input" type="checkbox" value="1" />
+															</div>
+															<!--end::Checkbox-->
+														</td>
+														<td data-order="rating-5">
+															<!--begin::Rating-->
+															<div class="rating">
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+															</div>
+															<!--end::Rating-->
+														</td>
+														<td>
+															<a href="apps/inbox/reply.html" class="d-flex text-gray-900 text-gray-800 text-hover-primary">
+																<!--begin::Avatar-->
+																<div class="symbol symbol-circle symbol-25px me-3">
+																	<div class="symbol-label bg-light-danger">
+																		<span class="text-danger">E</span>
+																	</div>
+																</div>
+																<!--end::Avatar-->
+																<!--begin::Name-->
+																<span class="fw-bold">Emma Bold</span>
+																<!--end::Name-->
+															</a>
+														</td>
+														<td class="text-gray-600 fw-bold">Was skeptical at first, but after using it for 3 months, I'm hooked! Will definately buy another!</td>
+														<td class="text-end">
+															<span class="fw-semibold text-muted">April 3</span>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<!--begin::Checkbox-->
+															<div class="form-check form-check-sm form-check-custom form-check-solid mt-1">
+																<input class="form-check-input" type="checkbox" value="1" />
+															</div>
+															<!--end::Checkbox-->
+														</td>
+														<td data-order="rating-4">
+															<!--begin::Rating-->
+															<div class="rating">
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+															</div>
+															<!--end::Rating-->
+														</td>
+														<td>
+															<a href="apps/inbox/reply.html" class="d-flex text-gray-900 text-gray-800 text-hover-primary">
+																<!--begin::Avatar-->
+																<div class="symbol symbol-circle symbol-25px me-3">
+																	<span class="symbol-label" style="background-image:url(assets/media/avatars/300-12.jpg)"></span>
+																</div>
+																<!--end::Avatar-->
+																<!--begin::Name-->
+																<span class="fw-bold">Ana Crown</span>
+																<!--end::Name-->
+															</a>
+														</td>
+														<td class="text-gray-600 fw-bold">Great product, too bad I missed out on the sale.</td>
+														<td class="text-end">
+															<span class="fw-semibold text-muted">March 17</span>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<!--begin::Checkbox-->
+															<div class="form-check form-check-sm form-check-custom form-check-solid mt-1">
+																<input class="form-check-input" type="checkbox" value="1" />
+															</div>
+															<!--end::Checkbox-->
+														</td>
+														<td data-order="rating-5">
+															<!--begin::Rating-->
+															<div class="rating">
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+															</div>
+															<!--end::Rating-->
+														</td>
+														<td>
+															<a href="apps/inbox/reply.html" class="d-flex text-gray-900 text-gray-800 text-hover-primary">
+																<!--begin::Avatar-->
+																<div class="symbol symbol-circle symbol-25px me-3">
+																	<div class="symbol-label bg-light-info">
+																		<span class="text-info">A</span>
+																	</div>
+																</div>
+																<!--end::Avatar-->
+																<!--begin::Name-->
+																<span class="fw-bold">Robert Doe</span>
+																<!--end::Name-->
+															</a>
+														</td>
+														<td class="text-gray-600 fw-bold">Got this on sale! Best decision ever!</td>
+														<td class="text-end">
+															<span class="fw-semibold text-muted">March 12</span>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<!--begin::Checkbox-->
+															<div class="form-check form-check-sm form-check-custom form-check-solid mt-1">
+																<input class="form-check-input" type="checkbox" value="1" />
+															</div>
+															<!--end::Checkbox-->
+														</td>
+														<td data-order="rating-5">
+															<!--begin::Rating-->
+															<div class="rating">
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+																<div class="rating-label checked">
+																	<i class="ki-outline ki-star fs-6"></i>
+																</div>
+															</div>
+															<!--end::Rating-->
+														</td>
+														<td>
+															<a href="apps/inbox/reply.html" class="d-flex text-gray-900 text-gray-800 text-hover-primary">
+																<!--begin::Avatar-->
+																<div class="symbol symbol-circle symbol-25px me-3">
+																	<span class="symbol-label" style="background-image:url(assets/media/avatars/300-13.jpg)"></span>
+																</div>
+																<!--end::Avatar-->
+																<!--begin::Name-->
+																<span class="fw-bold">John Miller</span>
+																<!--end::Name-->
+															</a>
+														</td>
+														<td class="text-gray-600 fw-bold">Firesale is on! Buy now! Totally worth it!</td>
+														<td class="text-end">
+															<span class="fw-semibold text-muted">March 11</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+											<!--end::Table-->
+										</div>
+										<!--end::Card body-->
+									</div>
+									<!--end::Reviews-->
+								</div>
+							</div>
+							<!--end::Tab pane-->
 						</div>
 						<!--end::Tab content-->
 						<div class="d-flex justify-content-end">
@@ -864,17 +1554,17 @@
 </div>
 <!--end:::Main-->
 @push('scripts')
-<!-- <script src="assets/js/custom/apps/ecommerce/catalog/save-product.js"></script> -->
-<!-- <script src="assets/js/custom/utilities/modals/create-campaign.js"></script>
-<script src="assets/js/custom/utilities/modals/new-target.js"></script>
-<script src="assets/js/custom/utilities/modals/new-card.js"></script>
-<script src="assets/js/custom/utilities/modals/bidding.js"></script>
-<script src="assets/js/custom/utilities/modals/top-up-wallet.js"></script>
-<script src="assets/js/widgets.bundle.js"></script>
-<script src="assets/js/custom/widgets.js"></script>
-<script src="assets/js/custom/apps/chat/chat.js"></script>
-<script src="assets/js/custom/utilities/modals/share-earn.js"></script>
-<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
-<script src="assets/js/custom/utilities/modals/users-search.js"></script> -->
+<!-- <script src="assets/js/custom/apps/ecommerce/catalog/save-product.js"></script>
+		<script src="assets/js/custom/utilities/modals/create-campaign.js"></script>
+		<script src="assets/js/custom/utilities/modals/new-target.js"></script>
+		<script src="assets/js/custom/utilities/modals/new-card.js"></script>
+		<script src="assets/js/custom/utilities/modals/bidding.js"></script>
+		<script src="assets/js/custom/utilities/modals/top-up-wallet.js"></script>
+		<script src="assets/js/widgets.bundle.js"></script>
+		<script src="assets/js/custom/widgets.js"></script>
+		<script src="assets/js/custom/apps/chat/chat.js"></script>
+		<script src="assets/js/custom/utilities/modals/share-earn.js"></script>
+		<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+		<script src="assets/js/custom/utilities/modals/users-search.js"></script> -->
 @endpush
 @endsection

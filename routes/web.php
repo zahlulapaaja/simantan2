@@ -20,6 +20,8 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/users', [UserController::class, 'index'])->name('user.list');
 Route::get('/create', [UserController::class, 'create'])->name('user.create');
 Route::post('/store', [UserController::class, 'store'])->name('user.store');
+Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+Route::put('/update/{id}', [UserController::class, 'update'])->name('user.update');
 
 // Route::get('/dashboard', function () {
 //     return view('index');

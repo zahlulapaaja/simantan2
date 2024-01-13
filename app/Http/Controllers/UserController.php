@@ -40,4 +40,12 @@ class UserController extends Controller
         User::create($data);
         return redirect()->route('user.list');
     }
+
+    public function edit(Request $request, $id)
+    {
+        $data = User::find($id);
+
+        // dd($data);
+        return view('users.edit', compact('data'));
+    }
 }
