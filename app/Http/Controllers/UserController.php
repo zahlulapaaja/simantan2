@@ -72,4 +72,17 @@ class UserController extends Controller
         User::whereId($id)->update($data);
         return redirect()->route('user.list');
     }
+
+    public function delete(Request $request, $id)
+    {
+        $data = User::find($id);
+
+        if ($data) {
+            $data->delete();
+        }
+
+        return redirect()->route('user.list');
+
+        // echo "<script>console.log('hayolo')</script>";
+    }
 }
