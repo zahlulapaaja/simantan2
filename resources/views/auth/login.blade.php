@@ -2509,6 +2509,11 @@ License: For each use you must have a valid license purchased only from above li
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
+    @if($message = Session::get('success'))
+    <script>
+        Swal.fire('{{ $message }}');
+    </script>
+    @endif
     @if($message = Session::get('failed'))
     <script>
         Swal.fire('{{ $message }}');

@@ -32,4 +32,11 @@ class LoginController extends Controller
         }
         // return view('');
     }
+
+    public function logout()
+    {
+        // dd('a');
+        Auth::logout();
+        return redirect()->route('login')->with('success', 'Anda berhasil logout');
+    }
 }
