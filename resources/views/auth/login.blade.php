@@ -75,7 +75,10 @@ License: For each use you must have a valid license purchased only from above li
                     <!--begin::Wrapper-->
                     <div class="w-lg-500px p-10">
                         <!--begin::Form-->
-                        <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" data-kt-redirect-url="index.html" action="#">
+                        <!-- <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" data-kt-redirect-url="index.html" action="#" method="post"> -->
+                        <form class="form w-100" action="{{ URL::route('login.proses') }}" method="post">
+                            @csrf
+                            @method('POST')
                             <!--begin::Heading-->
                             <div class="text-center mb-11">
                                 <!--begin::Title-->
@@ -116,12 +119,18 @@ License: For each use you must have a valid license purchased only from above li
                             <div class="fv-row mb-8">
                                 <!--begin::Email-->
                                 <input type="text" placeholder="Email" name="email" autocomplete="off" class="form-control bg-transparent" />
+                                @error('email')
+                                <small>{{ $message }}</small>
+                                @enderror
                                 <!--end::Email-->
                             </div>
                             <!--end::Input group=-->
                             <div class="fv-row mb-3">
                                 <!--begin::Password-->
                                 <input type="password" placeholder="Password" name="password" autocomplete="off" class="form-control bg-transparent" />
+                                @error('password')
+                                <small>{{ $message }}</small>
+                                @enderror
                                 <!--end::Password-->
                             </div>
                             <!--end::Input group=-->
@@ -2495,6 +2504,16 @@ License: For each use you must have a valid license purchased only from above li
     <script src="js/custom/utilities/modals/top-up-wallet.js"></script>
     <!--end::Custom Javascript-->
     <!--end::Javascript-->
+
+    <!-- Sweetalert -->
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
+    @if($message = Session::get('failed'))
+    <script>
+        Swal.fire('{{ $message }}');
+    </script>
+    @endif
 </body>
 <!--end::Body-->
 
