@@ -134,7 +134,7 @@
                                 <!--begin::Add user-->
                                 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
                                     <i class="ki-outline ki-plus fs-2"></i>Add User</button> -->
-                                <a href="{{ route('user.create') }}" class="btn btn-primary">
+                                <a href="{{ route('admin.user.create') }}" class="btn btn-primary">
                                     <i class="ki-outline ki-plus fs-2"></i>Add User
                                 </a>
                                 <!--end::Add user-->
@@ -244,7 +244,7 @@
                                         <!--begin::Modal body-->
                                         <div class="modal-body px-5 my-7">
                                             <!--begin::Form-->
-                                            <form id="kt_modal_add_user_form" class="form" action="{{ route('user.store') }}" method="post">
+                                            <form id="kt_modal_add_user_form" class="form" action="{{ route('admin.user.store') }}" method="post">
                                                 @csrf
                                                 <!--begin::Scroll-->
                                                 <div class="d-flex flex-column scroll-y px-5 px-lg-10" id="kt_modal_add_user_scroll" data-kt-scroll="true" data-kt-scroll-activate="true" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_user_header" data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px">
@@ -360,12 +360,12 @@
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
-                                                <a href="{{ route('user.edit', ['id' => $d->id]) }}" class="menu-link px-3">Edit</a>
+                                                <a href="{{ route('admin.user.edit', ['id' => $d->id]) }}" class="menu-link px-3">Edit</a>
                                             </div>
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
-                                                <form class="menu-link px-3" method="POST" action="{{ route('user.delete', ['id' => $d->id]) }}">
+                                                <form class="menu-link px-3" method="POST" action="{{ route('admin.user.delete', ['id' => $d->id]) }}">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button style="all: unset" type="submit" data-kt-users-table-filter="delete_row">Delete</button>

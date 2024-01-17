@@ -21,18 +21,12 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login-proses', [LoginController::class, 'login_proses'])->name('login.proses');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/users', [UserController::class, 'index'])->name('user.list');
-Route::get('/create', [UserController::class, 'create'])->name('user.create');
-Route::post('/store', [UserController::class, 'store'])->name('user.store');
-Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
-Route::put('/update/{id}', [UserController::class, 'update'])->name('user.update');
-Route::delete('/delete/{id}', [UserController::class, 'delete'])->name('user.delete');
-// Route::get('/delete', [UserController::class, 'delete'])->name('user.delete');
-
-// Route::get('/dashboard', function () {
-//     return view('index');
-// });
-
-// Route::get('/setting', function () {
-//     return view('account/setting');
-// });
+Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin'], function () {
+    Route::get('/', [HomeController::class, 'index'])->name('dashboard');
+    Route::get('/users', [UserController::class, 'index'])->name('user.list');
+    Route::get('/create', [UserController::class, 'create'])->name('user.create');
+    Route::post('/store', [UserController::class, 'store'])->name('user.store');
+    Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('/update/{id}', [UserController::class, 'update'])->name('user.update');
+    Route::delete('/delete/{id}', [UserController::class, 'delete'])->name('user.delete');
+});
