@@ -27,13 +27,13 @@ License: For each use you must have a valid license purchased only from above li
     <meta property="og:url" content="https://keenthemes.com/metronic" />
     <meta property="og:site_name" content="Metronic by Keenthemes" />
     <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
-    <link rel="shortcut icon" href="media/logos/favicon.ico" />
+    <link rel="shortcut icon" href="{{ asset('media/logos/favicon.ico') }}" />
     <!--begin::Fonts(mandatory for all pages)-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
     <!--end::Fonts-->
     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
-    <link href="plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
     <script>
         // Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }
@@ -92,7 +92,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="col-md-6">
                                     <!--begin::Google link=-->
                                     <a href="#" class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
-                                        <img alt="Logo" src="media/svg/brand-logos/google-icon.svg" class="h-15px me-3" />Sign in with Google</a>
+                                        <img alt="Logo" src="{{ asset('media/svg/brand-logos/google-icon.svg') }}" class="h-15px me-3" />Sign in with Google</a>
                                     <!--end::Google link=-->
                                 </div>
                                 <!--end::Col-->
@@ -100,8 +100,8 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="col-md-6">
                                     <!--begin::Google link=-->
                                     <a href="#" class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
-                                        <img alt="Logo" src="media/svg/brand-logos/apple-black.svg" class="theme-light-show h-15px me-3" />
-                                        <img alt="Logo" src="media/svg/brand-logos/apple-black-dark.svg" class="theme-dark-show h-15px me-3" />Sign in with Apple</a>
+                                        <img alt="Logo" src="{{ asset('media/svg/brand-logos/apple-black.svg') }}" class="theme-light-show h-15px me-3" />
+                                        <img alt="Logo" src="{{ asset('media/svg/brand-logos/apple-black-dark.svg') }}" class="theme-dark-show h-15px me-3" />Sign in with Apple</a>
                                     <!--end::Google link=-->
                                 </div>
                                 <!--end::Col-->
@@ -163,7 +163,7 @@ License: For each use you must have a valid license purchased only from above li
                     <div class="me-10">
                         <!--begin::Toggle-->
                         <button class="btn btn-flex btn-link btn-color-gray-700 btn-active-color-primary rotate fs-base" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" data-kt-menu-offset="0px, 0px">
-                            <img data-kt-element="current-lang-flag" class="w-20px h-20px rounded me-3" src="media/flags/united-states.svg" alt="" />
+                            <img data-kt-element="current-lang-flag" class="w-20px h-20px rounded me-3" src="{{ asset('media/flags/united-states.svg') }}" alt="" />
                             <span data-kt-element="current-lang-name" class="me-1">English</span>
                             <span class="d-flex flex-center rotate-180">
                                 <i class="ki-outline ki-down fs-5 text-muted m-0"></i>
@@ -176,7 +176,7 @@ License: For each use you must have a valid license purchased only from above li
                             <div class="menu-item px-3">
                                 <a href="#" class="menu-link d-flex px-5" data-kt-lang="English">
                                     <span class="symbol symbol-20px me-4">
-                                        <img data-kt-element="lang-flag" class="rounded-1" src="media/flags/united-states.svg" alt="" />
+                                        <img data-kt-element="lang-flag" class="rounded-1" src="{{ asset('media/flags/united-states.svg') }}" alt="" />
                                     </span>
                                     <span data-kt-element="lang-name">English</span>
                                 </a>
@@ -186,7 +186,7 @@ License: For each use you must have a valid license purchased only from above li
                             <div class="menu-item px-3">
                                 <a href="#" class="menu-link d-flex px-5" data-kt-lang="Spanish">
                                     <span class="symbol symbol-20px me-4">
-                                        <img data-kt-element="lang-flag" class="rounded-1" src="media/flags/spain.svg" alt="" />
+                                        <img data-kt-element="lang-flag" class="rounded-1" src="{{ asset('media/flags/spain.svg') }}" alt="" />
                                     </span>
                                     <span data-kt-element="lang-name">Spanish</span>
                                 </a>
@@ -196,7 +196,7 @@ License: For each use you must have a valid license purchased only from above li
                             <div class="menu-item px-3">
                                 <a href="#" class="menu-link d-flex px-5" data-kt-lang="German">
                                     <span class="symbol symbol-20px me-4">
-                                        <img data-kt-element="lang-flag" class="rounded-1" src="media/flags/germany.svg" alt="" />
+                                        <img data-kt-element="lang-flag" class="rounded-1" src="{{ asset('media/flags/germany.svg') }}" alt="" />
                                     </span>
                                     <span data-kt-element="lang-name">German</span>
                                 </a>
@@ -206,7 +206,7 @@ License: For each use you must have a valid license purchased only from above li
                             <div class="menu-item px-3">
                                 <a href="#" class="menu-link d-flex px-5" data-kt-lang="Japanese">
                                     <span class="symbol symbol-20px me-4">
-                                        <img data-kt-element="lang-flag" class="rounded-1" src="media/flags/japan.svg" alt="" />
+                                        <img data-kt-element="lang-flag" class="rounded-1" src="{{ asset('media/flags/japan.svg') }}" alt="" />
                                     </span>
                                     <span data-kt-element="lang-name">Japanese</span>
                                 </a>
@@ -216,7 +216,7 @@ License: For each use you must have a valid license purchased only from above li
                             <div class="menu-item px-3">
                                 <a href="#" class="menu-link d-flex px-5" data-kt-lang="French">
                                     <span class="symbol symbol-20px me-4">
-                                        <img data-kt-element="lang-flag" class="rounded-1" src="media/flags/france.svg" alt="" />
+                                        <img data-kt-element="lang-flag" class="rounded-1" src="{{ asset('media/flags/france.svg') }}" alt="" />
                                     </span>
                                     <span data-kt-element="lang-name">French</span>
                                 </a>
@@ -243,11 +243,11 @@ License: For each use you must have a valid license purchased only from above li
                 <div class="d-flex flex-column flex-center py-7 py-lg-15 px-5 px-md-15 w-100">
                     <!--begin::Logo-->
                     <a href="index.html" class="mb-0 mb-lg-12">
-                        <img alt="Logo" src="media/logos/custom-1.png" class="h-60px h-lg-75px" />
+                        <img alt="Logo" src="{{ asset('media/logos/custom-1.png') }}" class="h-60px h-lg-75px" />
                     </a>
                     <!--end::Logo-->
                     <!--begin::Image-->
-                    <img class="d-none d-lg-block mx-auto w-275px w-md-50 w-xl-500px mb-10 mb-lg-20" src="media/misc/auth-screens.png" alt="" />
+                    <img class="d-none d-lg-block mx-auto w-275px w-md-50 w-xl-500px mb-10 mb-lg-20" src="{{ asset('media/misc/auth-screens.png') }}" alt="" />
                     <!--end::Image-->
                     <!--begin::Title-->
                     <h1 class="d-none d-lg-block text-white fs-2qx fw-bolder text-center mb-7">Fast, Efficient and Productive</h1>
@@ -554,7 +554,7 @@ License: For each use you must have a valid license purchased only from above li
                                                 <div class="d-flex align-items-center">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-35px">
-                                                        <img src="media/svg/files/pdf.svg" alt="icon" />
+                                                        <img src="{{ asset('media/svg/files/pdf.svg') }}" alt="icon" />
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Details-->
@@ -581,7 +581,7 @@ License: For each use you must have a valid license purchased only from above li
                                                 <div class="d-flex align-items-center">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-35px">
-                                                        <img src="media/svg/files/tif.svg" alt="icon" />
+                                                        <img src="{{ asset('media/svg/files/tif.svg') }}" alt="icon" />
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Details-->
@@ -608,7 +608,7 @@ License: For each use you must have a valid license purchased only from above li
                                                 <div class="d-flex align-items-center">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-35px">
-                                                        <img src="media/svg/files/folder-document.svg" alt="icon" />
+                                                        <img src="{{ asset('media/svg/files/folder-document.svg') }}" alt="icon" />
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Details-->
@@ -635,7 +635,7 @@ License: For each use you must have a valid license purchased only from above li
                                                 <div class="d-flex align-items-center">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-35px">
-                                                        <img src="media/svg/files/css.svg" alt="icon" />
+                                                        <img src="{{ asset('media/svg/files/css.svg') }}" alt="icon" />
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Details-->
@@ -662,7 +662,7 @@ License: For each use you must have a valid license purchased only from above li
                                                 <div class="d-flex align-items-center">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-35px">
-                                                        <img src="media/svg/files/ai.svg" alt="icon" />
+                                                        <img src="{{ asset('media/svg/files/ai.svg') }}" alt="icon" />
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Details-->
@@ -689,7 +689,7 @@ License: For each use you must have a valid license purchased only from above li
                                                 <div class="d-flex align-items-center">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-35px">
-                                                        <img src="media/svg/files/doc.svg" alt="icon" />
+                                                        <img src="{{ asset('media/svg/files/doc.svg') }}" alt="icon" />
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Details-->
@@ -926,7 +926,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--end::Actions-->
                                     <!--begin::Illustration-->
                                     <div class="text-center px-4">
-                                        <img src="media/illustrations/sketchy-1/9.png" alt="" class="mww-100 mh-350px" />
+                                        <img src="{{ asset('media/illustrations/sketchy-1/9.png') }}" alt="" class="mww-100 mh-350px" />
                                     </div>
                                     <!--end::Illustration-->
                                 </div>
@@ -1172,9 +1172,9 @@ License: For each use you must have a valid license purchased only from above li
                                 <!--end::Input-->
                                 <!--begin::Card logos-->
                                 <div class="position-absolute translate-middle-y top-50 end-0 me-5">
-                                    <img src="media/svg/card-logos/visa.svg" alt="" class="h-25px" />
-                                    <img src="media/svg/card-logos/mastercard.svg" alt="" class="h-25px" />
-                                    <img src="media/svg/card-logos/american-express.svg" alt="" class="h-25px" />
+                                    <img src="{{ asset('media/svg/card-logos/visa.svg') }}" alt="" class="h-25px" />
+                                    <img src="{{ asset('media/svg/card-logos/mastercard.svg') }}" alt="" class="h-25px" />
+                                    <img src="{{ asset('media/svg/card-logos/american-express.svg') }}" alt="" class="h-25px" />
                                 </div>
                                 <!--end::Card logos-->
                             </div>
@@ -1374,25 +1374,25 @@ License: For each use you must have a valid license purchased only from above li
                             <div class="" data-kt-modal-bidding-type="dollar">
                                 <!--begin::Select2-->
                                 <select name="currency_dollar" aria-label="Select a Currency" data-placeholder="Select a currency.." class="form-select form-select-solid form-select-lg">
-                                    <option data-kt-bidding-modal-option-icon="flags/united-states.svg" value="USD" selected="selected">
+                                    <option data-kt-bidding-modal-option-icon="flags/united-states.svg') }}" value="USD" selected="selected">
                                         <b>USD</b>&nbsp;-&nbsp;USA dollar
                                     </option>
-                                    <option data-kt-bidding-modal-option-icon="flags/united-kingdom.svg" value="GBP">
+                                    <option data-kt-bidding-modal-option-icon="flags/united-kingdom.svg') }}" value="GBP">
                                         <b>GBP</b>&nbsp;-&nbsp;British pound
                                     </option>
-                                    <option data-kt-bidding-modal-option-icon="flags/australia.svg" value="AUD">
+                                    <option data-kt-bidding-modal-option-icon="flags/australia.svg') }}" value="AUD">
                                         <b>AUD</b>&nbsp;-&nbsp;Australian dollar
                                     </option>
-                                    <option data-kt-bidding-modal-option-icon="flags/japan.svg" value="JPY">
+                                    <option data-kt-bidding-modal-option-icon="flags/japan.svg') }}" value="JPY">
                                         <b>JPY</b>&nbsp;-&nbsp;Japanese yen
                                     </option>
-                                    <option data-kt-bidding-modal-option-icon="flags/sweden.svg" value="SEK">
+                                    <option data-kt-bidding-modal-option-icon="flags/sweden.svg') }}" value="SEK">
                                         <b>SEK</b>&nbsp;-&nbsp;Swedish krona
                                     </option>
-                                    <option data-kt-bidding-modal-option-icon="flags/canada.svg" value="CAD">
+                                    <option data-kt-bidding-modal-option-icon="flags/canada.svg') }}" value="CAD">
                                         <b>CAD</b>&nbsp;-&nbsp;Canadian dollar
                                     </option>
-                                    <option data-kt-bidding-modal-option-icon="flags/switzerland.svg" value="CHF">
+                                    <option data-kt-bidding-modal-option-icon="flags/switzerland.svg') }}" value="CHF">
                                         <b>CHF</b>&nbsp;-&nbsp;Swiss franc
                                     </option>
                                 </select>
@@ -1403,12 +1403,12 @@ License: For each use you must have a valid license purchased only from above li
                             <div class="d-none" data-kt-modal-bidding-type="crypto">
                                 <!--begin::Select2-->
                                 <select name="currency_crypto" aria-label="Select a Coin" data-placeholder="Select a currency.." class="form-select form-select-solid form-select-lg">
-                                    <option data-kt-bidding-modal-option-icon="svg/coins/bitcoin.svg" value="1" selected="selected">Bitcoin</option>
-                                    <option data-kt-bidding-modal-option-icon="svg/coins/binance.svg" value="2">Binance</option>
-                                    <option data-kt-bidding-modal-option-icon="svg/coins/chainlink.svg" value="3">Chainlink</option>
-                                    <option data-kt-bidding-modal-option-icon="svg/coins/coin.svg" value="4">Coin</option>
-                                    <option data-kt-bidding-modal-option-icon="svg/coins/ethereum.svg" value="5">Ethereum</option>
-                                    <option data-kt-bidding-modal-option-icon="svg/coins/filecoin.svg" value="6">Filecoin</option>
+                                    <option data-kt-bidding-modal-option-icon="svg/coins/bitcoin.svg') }}" value="1" selected="selected">Bitcoin</option>
+                                    <option data-kt-bidding-modal-option-icon="svg/coins/binance.svg') }}" value="2">Binance</option>
+                                    <option data-kt-bidding-modal-option-icon="svg/coins/chainlink.svg') }}" value="3">Chainlink</option>
+                                    <option data-kt-bidding-modal-option-icon="svg/coins/coin.svg') }}" value="4">Coin</option>
+                                    <option data-kt-bidding-modal-option-icon="svg/coins/ethereum.svg') }}" value="5">Ethereum</option>
+                                    <option data-kt-bidding-modal-option-icon="svg/coins/filecoin.svg') }}" value="6">Filecoin</option>
                                 </select>
                                 <!--end::Select2-->
                             </div>
@@ -1487,7 +1487,7 @@ License: For each use you must have a valid license purchased only from above li
                     <!--end::Heading-->
                     <!--begin::Google Contacts Invite-->
                     <div class="btn btn-light-primary fw-bold w-100 mb-8">
-                        <img alt="Logo" src="media/svg/brand-logos/google-icon.svg" class="h-20px me-3" />Invite Gmail Contacts
+                        <img alt="Logo" src="{{ asset('media/svg/brand-logos/google-icon.svg') }}" class="h-20px me-3" />Invite Gmail Contacts
                     </div>
                     <!--end::Google Contacts Invite-->
                     <!--begin::Separator-->
@@ -1511,7 +1511,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="media/avatars/300-6.jpg" />
+                                        <img alt="Pic" src="{{ asset('media/avatars/300-6.jpg') }}" />
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
@@ -1567,7 +1567,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="media/avatars/300-1.jpg" />
+                                        <img alt="Pic" src="{{ asset('media/avatars/300-1.jpg') }}" />
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
@@ -1595,7 +1595,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="media/avatars/300-5.jpg" />
+                                        <img alt="Pic" src="{{ asset('media/avatars/300-5.jpg') }}" />
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
@@ -1623,7 +1623,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="media/avatars/300-25.jpg" />
+                                        <img alt="Pic" src="{{ asset('media/avatars/300-25.jpg') }}" />
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
@@ -1679,7 +1679,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="media/avatars/300-9.jpg" />
+                                        <img alt="Pic" src="{{ asset('media/avatars/300-9.jpg') }}" />
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
@@ -1763,7 +1763,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="media/avatars/300-23.jpg" />
+                                        <img alt="Pic" src="{{ asset('media/avatars/300-23.jpg') }}" />
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
@@ -1819,7 +1819,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="media/avatars/300-12.jpg" />
+                                        <img alt="Pic" src="{{ asset('media/avatars/300-12.jpg') }}" />
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
@@ -1875,7 +1875,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="media/avatars/300-13.jpg" />
+                                        <img alt="Pic" src="{{ asset('media/avatars/300-13.jpg') }}" />
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
@@ -1931,7 +1931,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="media/avatars/300-21.jpg" />
+                                        <img alt="Pic" src="{{ asset('media/avatars/300-21.jpg') }}" />
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
@@ -1959,7 +1959,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="media/avatars/300-25.jpg" />
+                                        <img alt="Pic" src="{{ asset('media/avatars/300-25.jpg') }}" />
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
@@ -2163,7 +2163,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <input type="radio" class="btn-check" name="payment_methods" value="dollar" id="kt_modal_top_up_wallet_payment_method_option_0" checked="checked" />
                                                     <label class="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex align-items-start gap-5 h-100" for="kt_modal_top_up_wallet_payment_method_option_0">
                                                         <!--begin::Icon-->
-                                                        <img src="media/svg/card-logos/mastercard.svg" alt="" class="w-50px" />
+                                                        <img src="{{ asset('media/svg/card-logos/mastercard.svg') }}" alt="" class="w-50px" />
                                                         <!--end::Icon-->
                                                         <!--begin::Card details-->
                                                         <div class="d-flex align-items-start flex-column gap-3">
@@ -2193,7 +2193,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <input type="radio" class="btn-check" name="payment_methods" value="dollar" id="kt_modal_top_up_wallet_payment_method_option_1" />
                                                     <label class="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex align-items-start gap-5 h-100" for="kt_modal_top_up_wallet_payment_method_option_1">
                                                         <!--begin::Icon-->
-                                                        <img src="media/svg/card-logos/visa.svg" alt="" class="w-50px" />
+                                                        <img src="{{ asset('media/svg/card-logos/visa.svg') }}" alt="" class="w-50px" />
                                                         <!--end::Icon-->
                                                         <!--begin::Card details-->
                                                         <div class="d-flex align-items-start flex-column gap-3">
@@ -2220,7 +2220,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <input type="radio" class="btn-check" name="payment_methods" value="dollar" id="kt_modal_top_up_wallet_payment_method_option_2" />
                                                     <label class="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex align-items-start gap-5 h-100" for="kt_modal_top_up_wallet_payment_method_option_2">
                                                         <!--begin::Icon-->
-                                                        <img src="media/svg/card-logos/mastercard.svg" alt="" class="w-50px" />
+                                                        <img src="{{ asset('media/svg/card-logos/mastercard.svg') }}" alt="" class="w-50px" />
                                                         <!--end::Icon-->
                                                         <!--begin::Card details-->
                                                         <div class="d-flex align-items-start flex-column gap-3">
@@ -2276,7 +2276,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <input type="radio" class="btn-check" name="select_coin" value="dollar" id="kt_modal_top_up_wallet_coin_option_0" checked="checked" />
                                                     <label class="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex flex-column flex-center gap-5 h-100" for="kt_modal_top_up_wallet_coin_option_0">
                                                         <!--begin::Icon-->
-                                                        <img src="media/svg/coins/binance.svg" alt="" class="w-50px" />
+                                                        <img src="{{ asset('media/svg/coins/binance.svg') }}" alt="" class="w-50px" />
                                                         <!--end::Icon-->
                                                         <!--begin::Label-->
                                                         <div class="fs-5 fw-bold">Binance</div>
@@ -2290,7 +2290,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <input type="radio" class="btn-check" name="select_coin" value="dollar" id="kt_modal_top_up_wallet_coin_option_1" />
                                                     <label class="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex flex-column flex-center gap-5 h-100" for="kt_modal_top_up_wallet_coin_option_1">
                                                         <!--begin::Icon-->
-                                                        <img src="media/svg/coins/bitcoin.svg" alt="" class="w-50px" />
+                                                        <img src="{{ asset('media/svg/coins/bitcoin.svg') }}" alt="" class="w-50px" />
                                                         <!--end::Icon-->
                                                         <!--begin::Label-->
                                                         <div class="fs-5 fw-bold">Bitcoin</div>
@@ -2304,7 +2304,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <input type="radio" class="btn-check" name="select_coin" value="dollar" id="kt_modal_top_up_wallet_coin_option_2" />
                                                     <label class="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex flex-column flex-center gap-5 h-100" for="kt_modal_top_up_wallet_coin_option_2">
                                                         <!--begin::Icon-->
-                                                        <img src="media/svg/coins/chainlink.svg" alt="" class="w-50px" />
+                                                        <img src="{{ asset('media/svg/coins/chainlink.svg') }}" alt="" class="w-50px" />
                                                         <!--end::Icon-->
                                                         <!--begin::Label-->
                                                         <div class="fs-5 fw-bold">Chainlink</div>
@@ -2318,7 +2318,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <input type="radio" class="btn-check" name="select_coin" value="dollar" id="kt_modal_top_up_wallet_coin_option_3" />
                                                     <label class="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex flex-column flex-center gap-5 h-100" for="kt_modal_top_up_wallet_coin_option_3">
                                                         <!--begin::Icon-->
-                                                        <img src="media/svg/coins/coin.svg" alt="" class="w-50px" />
+                                                        <img src="{{ asset('media/svg/coins/coin.svg') }}" alt="" class="w-50px" />
                                                         <!--end::Icon-->
                                                         <!--begin::Label-->
                                                         <div class="fs-5 fw-bold">Coin</div>
@@ -2332,7 +2332,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <input type="radio" class="btn-check" name="select_coin" value="dollar" id="kt_modal_top_up_wallet_coin_option_4" />
                                                     <label class="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex flex-column flex-center gap-5 h-100" for="kt_modal_top_up_wallet_coin_option_4">
                                                         <!--begin::Icon-->
-                                                        <img src="media/svg/coins/ethereum.svg" alt="" class="w-50px" />
+                                                        <img src="{{ asset('media/svg/coins/ethereum.svg') }}" alt="" class="w-50px" />
                                                         <!--end::Icon-->
                                                         <!--begin::Label-->
                                                         <div class="fs-5 fw-bold">Ethereum</div>
@@ -2346,7 +2346,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <input type="radio" class="btn-check" name="select_coin" value="dollar" id="kt_modal_top_up_wallet_coin_option_5" />
                                                     <label class="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex flex-column flex-center gap-5 h-100" for="kt_modal_top_up_wallet_coin_option_5">
                                                         <!--begin::Icon-->
-                                                        <img src="media/svg/coins/filecoin.svg" alt="" class="w-50px" />
+                                                        <img src="{{ asset('media/svg/coins/filecoin.svg') }}" alt="" class="w-50px" />
                                                         <!--end::Icon-->
                                                         <!--begin::Label-->
                                                         <div class="fs-5 fw-bold">Filecoin</div>
@@ -2391,7 +2391,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <div class="d-flex align-items-center gap-5">
                                             <!--begin::Image-->
                                             <div class="symbol symbol-100px symbol-circle">
-                                                <img src="media/avatars/300-11.jpg" alt="Secret Image" />
+                                                <img src="{{ asset('media/avatars/300-11.jpg') }}" alt="Secret Image" />
                                             </div>
                                             <!--end::Image-->
                                             <!--begin::Keyword-->
@@ -2439,7 +2439,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--end::Actions-->
                                     <!--begin::Illustration-->
                                     <div class="text-center px-4">
-                                        <img src="media/illustrations/sketchy-1/9.png" alt="" class="mww-100 mh-350px" />
+                                        <img src="{{ asset('media/illustrations/sketchy-1/9.png') }}" alt="" class="mww-100 mh-350px" />
                                     </div>
                                     <!--end::Illustration-->
                                 </div>
