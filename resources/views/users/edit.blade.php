@@ -62,7 +62,7 @@
 			<!--begin::Content container-->
 			<div id="kt_app_content_container" class="app-container container-fluid">
 				<!--begin::Form-->
-				<form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" action="{{ route('admin.user.update', ['id' => $data->id]) }}" method="post">
+				<form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" action="{{ route('user.update', ['id' => $data->id]) }}" method="post">
 					@csrf
 					@method('PUT')
 					<!--begin::Aside column-->
