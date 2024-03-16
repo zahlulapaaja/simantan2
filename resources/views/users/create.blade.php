@@ -62,7 +62,7 @@
 			<!--begin::Content container-->
 			<div id="kt_app_content_container" class="app-container container-fluid">
 				<!--begin::Form-->
-				<form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" action="{{ route('user.store') }}" method="post">
+				<form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" action="{{ route('user.store') }}" method="post" enctype="multipart/form-data">
 					@csrf
 					<!--begin::Aside column-->
 					<div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
@@ -117,7 +117,12 @@
 								</div>
 								<!--end::Image input-->
 								<!--begin::Description-->
-								<div class="text-muted fs-7">Set the product thumbnail image. Only *.png, *.jpg and *.jpeg image files are accepted</div>
+								@error('avatar')
+								<div class="text-muted fs-7">
+									<small>{{ $message }}</small>
+									<!-- Set the product thumbnail image. Only *.png, *.jpg and *.jpeg image files are accepted -->
+								</div>
+                                @enderror
 								<!--end::Description-->
 							</div>
 							<!--end::Card body-->

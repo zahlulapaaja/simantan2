@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -24,16 +25,25 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'name'  => 'required',
+            'avatar'    => 'required|mimes:png,jpg,jpeg|max:2048',
+            'email'     => 'required|email',
+            'name'      => 'required',
             'password'  => 'required'
         ]);
 
         if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
+        $avatar     = $request->file('avatar');
+        $filename   = date('Y-m-d').$avatar->getClientOriginalName();
+        $path       = 'avatar-user/'.$filename;
+
+        Storage::disk('public')->put($path, file_get_contents($avatar));
+
+
         $data['email'] = $request->email;
         $data['name'] = $request->name;
         $data['password'] = Hash::make($request->password);
+        $data['image'] = $filename;
 
         // dd($data);
 

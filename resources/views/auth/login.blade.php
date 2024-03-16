@@ -118,7 +118,7 @@ License: For each use you must have a valid license purchased only from above li
                             <!--begin::Input group=-->
                             <div class="fv-row mb-8">
                                 <!--begin::Email-->
-                                <input type="text" placeholder="Email" name="email" autocomplete="off" class="form-control bg-transparent" />
+                                <input type="text" placeholder="Email" name="email" autocomplete="off" class="form-control bg-transparent" value="{{ old('email') }}" />
                                 @error('email')
                                 <small>{{ $message }}</small>
                                 @enderror

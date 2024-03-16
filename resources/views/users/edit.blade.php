@@ -83,7 +83,7 @@
 								<!--begin::Image input-->
 								<div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3" data-kt-image-input="true">
 									<!--begin::Preview existing avatar-->
-									<div class="image-input-wrapper w-150px h-150px" style="background-image: url(assets/media//stock/ecommerce/78.png)"></div>
+									<div class="image-input-wrapper w-150px h-150px" style="background-image: url({{asset('storage/avatar-user/'.$data->image)}})"></div>
 									<!--end::Preview existing avatar-->
 									<!--begin::Label-->
 									<label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
