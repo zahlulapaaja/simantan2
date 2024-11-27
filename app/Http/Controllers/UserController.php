@@ -25,7 +25,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'avatar'    => 'required|mimes:png,jpg,jpeg|max:2048',
+            'avatar'    => 'mimes:png,jpg,jpeg|max:2048',
             'email'     => 'required|email',
             'name'      => 'required',
             'password'  => 'required'
@@ -34,8 +34,8 @@ class UserController extends Controller
         if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
         $avatar     = $request->file('avatar');
-        $filename   = date('Y-m-d').$avatar->getClientOriginalName();
-        $path       = 'avatar-user/'.$filename;
+        $filename   = date('Y-m-d') . $avatar->getClientOriginalName();
+        $path       = 'avatar-user/' . $filename;
 
         Storage::disk('public')->put($path, file_get_contents($avatar));
 

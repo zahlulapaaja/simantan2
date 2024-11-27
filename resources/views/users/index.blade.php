@@ -333,9 +333,10 @@
                                     <td class="d-flex align-items-center">
                                         <!--begin:: Avatar -->
                                         <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                                            <a href="apps/user-management/users/view.html">
+                                            <!-- <a href="apps/user-management/users/view.html">
                                                 <div class="symbol-label fs-3 bg-light-danger text-danger">M</div>
-                                            </a>
+                                            </a> -->
+                                            <img src="{{Storage::url('avatar-user/'.$d->image)}}" alt="gambar">
                                         </div>
                                         <!--end::Avatar-->
                                         <!--begin::User details-->
