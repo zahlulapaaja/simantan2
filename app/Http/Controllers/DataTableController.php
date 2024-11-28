@@ -20,7 +20,7 @@ class DataTableController extends Controller
         }
         $data = $data->get();
         // return view('auth/sign-in');
-        return view('users.index', compact('data', 'request'));
+        return view('datatable.clientside', compact('data', 'request'));
     }
 
     public function serverside(Request $request)
