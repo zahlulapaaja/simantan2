@@ -67,12 +67,14 @@
                     <div class="card-header border-0 pt-6">
                         <!--begin::Card title-->
                         <div class="card-title">
-                            <!--begin::Search-->
-                            <div class="d-flex align-items-center position-relative my-1">
-                                <i class="ki-outline ki-magnifier fs-3 position-absolute ms-5"></i>
-                                <input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-13" placeholder="Search user" />
-                            </div>
-                            <!--end::Search-->
+                            <form action="{{ route('user.list') }}" method="GET">
+                                <!--begin::Search-->
+                                <div class="d-flex align-items-center position-relative my-1">
+                                    <i class="ki-outline ki-magnifier fs-3 position-absolute ms-5"></i>
+                                    <input name="search" type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-13" placeholder="Search user" value="{{ $request->get('search') }}" />
+                                </div>
+                                <!--end::Search-->
+                            </form>
                         </div>
                         <!--begin::Card title-->
                         <!--begin::Card toolbar-->

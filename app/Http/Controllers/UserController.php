@@ -10,11 +10,17 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = User::get();
+        $data = new User;
+
+        if ($request->get('search')) {
+            $data = $data->where('name', 'LIKE', '%' . $request->get('search') . '%')
+                ->orWhere('email', 'LIKE', '%' . $request->get('search') . '%');
+        }
+        $data = $data->get();
         // return view('auth/sign-in');
-        return view('users.index', compact('data'));
+        return view('users.index', compact('data', 'request'));
     }
 
     public function create()
