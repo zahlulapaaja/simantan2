@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DataTableController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,4 +30,7 @@ Route::group(['name' => 'admin.', 'middleware' => ['auth']], function () {
     Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
     Route::put('/update/{id}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/delete/{id}', [UserController::class, 'delete'])->name('user.delete');
+
+    Route::get('/clientside', [DataTableController::class, 'clientside'])->name('clientside');
+    Route::get('/serverside', [DataTableController::class, 'serverside'])->name('serverside');
 });
