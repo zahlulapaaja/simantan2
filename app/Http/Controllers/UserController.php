@@ -67,12 +67,28 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
+        $find = User::find($id);
         // dd($request->all());
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'name'  => 'required',
-            'password'  => 'nullable'
+            'password'  => 'nullable',
+            'avatar'    => 'nullable|mimes:png,jpg,jpeg|max:2048',
         ]);
+
+        $avatar     = $request->file('avatar');
+
+        if ($avatar) {
+            $filename   = date('Y-m-d') . $avatar->getClientOriginalName();
+            $path       = 'avatar-user/' . $filename;
+
+            if ($find->image) {
+                Storage::disk('public')->delete('avatar-user/' . $find->image);
+            }
+            Storage::disk('public')->put($path, file_get_contents($avatar));
+
+            $data['image'] = $filename;
+        }
 
         if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
@@ -85,7 +101,7 @@ class UserController extends Controller
 
         // dd($data);
 
-        User::whereId($id)->update($data);
+        $find->update($data);
         return redirect()->route('user.list');
     }
 

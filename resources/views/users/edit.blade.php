@@ -62,7 +62,7 @@
 			<!--begin::Content container-->
 			<div id="kt_app_content_container" class="app-container container-fluid">
 				<!--begin::Form-->
-				<form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" action="{{ route('user.update', ['id' => $data->id]) }}" method="post">
+				<form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" action="{{ route('user.update', ['id' => $data->id]) }}" method="post" enctype="multipart/form-data">
 					@csrf
 					@method('PUT')
 					<!--begin::Aside column-->
@@ -83,7 +83,9 @@
 								<!--begin::Image input-->
 								<div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3" data-kt-image-input="true">
 									<!--begin::Preview existing avatar-->
+									@if($data->image)
 									<div class="image-input-wrapper w-150px h-150px" style="background-image: url({{asset('storage/avatar-user/'.$data->image)}})"></div>
+									@endif
 									<!--end::Preview existing avatar-->
 									<!--begin::Label-->
 									<label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
