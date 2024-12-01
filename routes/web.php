@@ -22,7 +22,13 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login-proses', [LoginController::class, 'login_proses'])->name('login.proses');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::group(['name' => 'admin.', 'middleware' => ['auth']], function () {
+//permission dengan laravel gate
+// Route::group(['name' => 'admin.', 'middleware' => ['auth', 'can:view_dashboard']], function () { // => bisa kayak gini
+// Route::group(['name' => 'admin.', 'middleware' => ['auth', 'permission:view_dashboard']], function () { // => bisa kayak gini
+Route::group(['name' => 'admin.', 'middleware' => ['auth', 'role:admin|writer']], function () { // => bisa kayak gini
+    // Route::group(['name' => 'admin.', 'middleware' => ['auth']], function () {
+    // Route::get('/', [HomeController::class, 'index'])->name('dashboard')->middleware('can:view_dashboard'); //bisa juga kayak gini
+    // Route::get('/', [HomeController::class, 'index'])->name('dashboard')->middleware('permission:view_dashboard'); //dan bisa kayak gini
     Route::get('/', [HomeController::class, 'index'])->name('dashboard');
     Route::get('/users', [UserController::class, 'index'])->name('user.list');
     Route::get('/create', [UserController::class, 'create'])->name('user.create');

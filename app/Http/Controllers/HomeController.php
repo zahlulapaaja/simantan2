@@ -12,6 +12,11 @@ class HomeController extends Controller
         // dd(auth()->user()->getRoleNames());
         // error tapi bisa aja dipanggil
         // utk tes hapus dulu satu role, supaya ga bingung ketika ngoding nanti
-        return view('index');
+
+        // permission dengan menggunakan controller
+        if (auth()->user()->can('view_dashboard')) {
+            return view('index');
+        }
+        return abort(403);
     }
 }

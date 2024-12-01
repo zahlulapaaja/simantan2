@@ -57,5 +57,7 @@ class PermissionSeeder extends Seeder
         $user = User::where('email', 'like', 'admin%')->first();
         // $user->assignRole(['admin', 'writer']);
         $user->assignRole(['admin']);
+        $user2 = User::where('email', 'like', 'kotak%')->first();
+        $user2->assignRole(['writer']);
     }
 }
