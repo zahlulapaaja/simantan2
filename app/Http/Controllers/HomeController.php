@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        // permissionnya dipindah aja ke construct
+        $this->middleware(['role:admin']);
+        $this->middleware(['role_or_permission:writer|view_dashboard']);
+    }
+
     public function index()
     {
         // dd(auth()->user()->getRoleNames());
@@ -14,9 +21,9 @@ class HomeController extends Controller
         // utk tes hapus dulu satu role, supaya ga bingung ketika ngoding nanti
 
         // permission dengan menggunakan controller
-        if (auth()->user()->can('view_dashboard')) {
-            return view('index');
-        }
+        // if (auth()->user()->can('view_dashboard')) {
+        return view('index');
+        // }
         return abort(403);
     }
 }

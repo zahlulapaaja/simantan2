@@ -25,8 +25,8 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 //permission dengan laravel gate
 // Route::group(['name' => 'admin.', 'middleware' => ['auth', 'can:view_dashboard']], function () { // => bisa kayak gini
 // Route::group(['name' => 'admin.', 'middleware' => ['auth', 'permission:view_dashboard']], function () { // => bisa kayak gini
-Route::group(['name' => 'admin.', 'middleware' => ['auth', 'role:admin|writer']], function () { // => bisa kayak gini
-    // Route::group(['name' => 'admin.', 'middleware' => ['auth']], function () {
+// Route::group(['name' => 'admin.', 'middleware' => ['auth', 'role:admin|writer']], function () { // => bisa kayak gini
+Route::group(['name' => 'admin.', 'middleware' => ['auth']], function () {
     // Route::get('/', [HomeController::class, 'index'])->name('dashboard')->middleware('can:view_dashboard'); //bisa juga kayak gini
     // Route::get('/', [HomeController::class, 'index'])->name('dashboard')->middleware('permission:view_dashboard'); //dan bisa kayak gini
     Route::get('/', [HomeController::class, 'index'])->name('dashboard');
