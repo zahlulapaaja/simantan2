@@ -10,8 +10,8 @@ class HomeController extends Controller
     public function __construct()
     {
         // permissionnya dipindah aja ke construct
-        $this->middleware(['role:admin']);
-        $this->middleware(['role_or_permission:writer|view_dashboard']);
+        $this->middleware(['permission:view_dashboard']);
+        // $this->middleware(['role_or_permission:writer|view_dashboard']);
     }
 
     public function index()
