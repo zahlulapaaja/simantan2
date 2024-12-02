@@ -317,7 +317,7 @@
                                         </div>
                                     </th>
                                     <th class="min-w-125px">User</th>
-                                    <th class="min-w-125px">Role</th>
+                                    <th class="min-w-125px">NIK</th>
                                     <th class="min-w-125px">Last login</th>
                                     <th class="min-w-125px">Two-step</th>
                                     <th class="min-w-125px">Joined Date</th>
@@ -348,7 +348,7 @@
                                         </div>
                                         <!--begin::User details-->
                                     </td>
-                                    <td>Analyst</td>
+                                    <td>{{ $d->ktp->nik ?? '' }}</td>
                                     <td>
                                         <div class="badge badge-light fw-bold">20 mins ago</div>
                                     </td>
