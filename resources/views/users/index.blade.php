@@ -369,9 +369,10 @@
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
                                                 <form class="menu-link px-3" method="POST" action="{{ route('user.delete', ['id' => $d->id]) }}">
-                                                    @csrf
                                                     @method('DELETE')
-                                                    <button style="all: unset" type="submit" data-kt-users-table-filter="delete_row">Delete</button>
+                                                    @csrf
+                                                    <!-- <input type="hidden" name="id" value="{{ $d->id }}"> -->
+                                                    <input style="all: unset" type="submit" value="Delete" />
                                                 </form>
                                                 <!-- <a href="#" class="menu-link px-3" data-kt-users-table-filter="delete_row">Delete</a> -->
                                             </div>

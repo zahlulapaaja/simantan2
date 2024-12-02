@@ -18,6 +18,9 @@ class UserController extends Controller
             $data = $data->where('name', 'LIKE', '%' . $request->get('search') . '%')
                 ->orWhere('email', 'LIKE', '%' . $request->get('search') . '%');
         }
+
+        // $data = $data->withTrashed();
+        // $data = $data->onlyTrashed();
         $data = $data->get();
         // return view('auth/sign-in');
         return view('users.index', compact('data', 'request'));
@@ -107,10 +110,13 @@ class UserController extends Controller
 
     public function delete(Request $request, $id)
     {
+        // dd($id);
         $data = User::find($id);
+
 
         if ($data) {
             $data->delete();
+            // $data->forceDelete(); // ini ga memedulikan soft delete
         }
 
         return redirect()->route('user.list');
