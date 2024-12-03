@@ -60,6 +60,14 @@ class UserController extends Controller
         return redirect()->route('user.list');
     }
 
+    public function detail(Request $request, $id)
+    {
+        $data = User::find($id);
+
+        // dd($data);
+        return view('users.detail', compact('data'));
+    }
+
     public function edit(Request $request, $id)
     {
         $data = User::find($id);

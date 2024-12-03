@@ -49,4 +49,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Ktp::class);
     }
+
+    public function rumahs()
+    {
+        return $this->hasMany(Rumah::class);
+        // return $this->hasMany(Rumah::class, 'user_id', 'id'); // define manual
+    }
 }
