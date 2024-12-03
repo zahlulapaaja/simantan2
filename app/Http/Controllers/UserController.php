@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class UserController extends Controller
 {
@@ -23,6 +24,13 @@ class UserController extends Controller
         // $data = $data->onlyTrashed();
         $data = $data->get();
         // return view('auth/sign-in');
+
+        if ($request->get('export') == 'pdf') {
+            $pdf = Pdf::loadView('pdf.users', ['data' => $data]);
+            // return $pdf->download('Data Users.pdf');
+            return $pdf->stream('Data Users.pdf');
+        }
+
         return view('users.index', compact('data', 'request'));
     }
 

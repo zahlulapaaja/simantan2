@@ -130,12 +130,15 @@
                                 <!--end::Menu 1-->
                                 <!--end::Filter-->
                                 <!--begin::Export-->
-                                <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal" data-bs-target="#kt_modal_export_users">
-                                    <i class="ki-outline ki-exit-up fs-2"></i>Export</button>
+                                <!-- <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal" data-bs-target="#kt_modal_export_users">
+                                    <i class="ki-outline ki-exit-up fs-2"></i>Export</button> -->
                                 <!--end::Export-->
                                 <!--begin::Add user-->
                                 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
                                     <i class="ki-outline ki-plus fs-2"></i>Add User</button> -->
+                                <a href="{{ route('user.list') }}?export=pdf" class="btn btn-light-primary me-3">
+                                    <i class="ki-outline ki-exit-up fs-2"></i>Export
+                                </a>
                                 <a href="{{ route('user.create') }}" class="btn btn-primary">
                                     <i class="ki-outline ki-plus fs-2"></i>Add User
                                 </a>
