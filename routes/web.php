@@ -45,3 +45,9 @@ Route::group(['name' => 'admin.', 'middleware' => ['auth']], function () {
 
 Route::get('/enkripsi', [BelajarController::class, 'enkripsi'])->name('enkripsi');
 Route::get('/enkripsi-detail/{params}', [BelajarController::class, 'enkripsi_detail'])->name('enkripsi-detail');
+
+Route::get('locale/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+    return redirect()->back();
+})->name('locale');

@@ -163,6 +163,8 @@
                     <!--end:Menu item-->
                     <!--begin:Menu item-->
                     <div class="menu-item">
+                        <a href="{{ route('locale', ['locale' => 'id']) }}" class="me-3" style="{{ session()->get('locale') == 'id' ? 'background-color: rgb(255,209,209)' : '' }}">id</a>
+                        <a href="{{ route('locale', ['locale' => 'en']) }}" class="me-3" style="{{ session()->get('locale') == 'en' ? 'background-color: rgb(255,209,209)' : '' }}">en</a>
                         <!--begin:Menu link-->
                         <a class="menu-link" href="utilities/modals/wizards/create-app.html">
                             <span class="menu-icon">

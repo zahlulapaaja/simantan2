@@ -356,9 +356,11 @@
 												<thead>
 													<tr>
 														<th>No</th>
-														<th>Type Rumah</th>
-														<th>Harga Rumah</th>
-														<th>Lokasi Rumah</th>
+														<!-- Bisa Gini -->
+														<!-- <th>{{ __('users.type_rumah') }}</th> -->
+														<th>@lang('users.type_rumah')</th>
+														<th>@lang('users.harga_rumah')</th>
+														<th>@lang('users.lokasi_rumah')</th>
 													</tr>
 												</thead>
 												<tbody>
