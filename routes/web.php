@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BelajarController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
@@ -41,3 +42,6 @@ Route::group(['name' => 'admin.', 'middleware' => ['auth']], function () {
     Route::get('/clientside', [DataTableController::class, 'clientside'])->name('clientside');
     Route::get('/serverside', [DataTableController::class, 'serverside'])->name('serverside');
 });
+
+Route::get('/enkripsi', [BelajarController::class, 'enkripsi'])->name('enkripsi');
+Route::get('/enkripsi-detail/{params}', [BelajarController::class, 'enkripsi_detail'])->name('enkripsi-detail');
