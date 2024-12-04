@@ -33,4 +33,9 @@ class BelajarController extends Controller
         $params = Crypt::decrypt($params);
         dd($params);
     }
+
+    public function gambar()
+    {
+        echo "<img src='" . image('avatars/300-1.jpg') . "'>";
+    }
 }

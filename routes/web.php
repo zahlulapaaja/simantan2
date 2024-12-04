@@ -51,3 +51,5 @@ Route::get('locale/{locale}', function ($locale) {
     session()->put('locale', $locale);
     return redirect()->back();
 })->name('locale');
+
+Route::get('/gambar', [BelajarController::class, 'gambar'])->name('gambar');
